@@ -12,13 +12,28 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Get version from plugin.php
-        id: get_version
-        run: echo ::set-output name=version::$(grep -oP "Version:\s*\K.*" plugin.php)
+      - name: Get last release tag
+        id: get_last_release_tag
+        run: echo ::set-output name=last_release_tag::$(git describe --tags --abbrev=0)
+        shell: bash
+      - name: Get current version from plugin.php
+        id: get_current_version
+        run: echo ::set-output name=current_version::$(grep -oP "Version:\s*\K.*" plugin.php)
+        shell: bash
+      - name: Increment version in plugin.php
+        id: increment_version_in_plugin_php
+        run: |
+          current_version=$(echo ${{ steps.get_current_version.outputs.current_version }})
+          major=$(echo $current_version | cut -d "." -f 1)
+          minor=$(echo $current_version | cut -d "." -f 2)
+          patch=$(echo $current_version | cut -d "." -f 3)
+          new_patch=$((patch + 1))
+          new_version="$major.$minor.$new_patch"
+          sed -i "s/Version:\s*$current_version/Version: $new_version/g" plugin.php
         shell: bash
       - name: Get commit messages since last release
         id: get_commit_messages_since_last_release
-        run: echo ::set-output name=commit_messages::$(git log --pretty=format:&quot;%s&quot; ${{ steps.get_last_release_tag.outputs.last_release_tag }}..HEAD)
+        run: echo ::set-output name=commit_messages::$(git log --pretty=format:"%s" ${{ steps.get_last_release_tag.outputs.last_release_tag }}..HEAD)
         shell: bash
       - name: Zip project
         run: zip -r relario-pay-wp-plugin.zip .
@@ -28,8 +43,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.get_version.outputs.version }}
-          release_name: Release ${{ steps.get_version.outputs.version }}
+          tag_name: v${{ steps.increment_version_in_plugin_php.outputs.new_version }}
+          release_name: Release ${{ steps.increment_version_in_plugin_php.outputs.new_version }}
           draft: false
           prerelease: false
           body: |
