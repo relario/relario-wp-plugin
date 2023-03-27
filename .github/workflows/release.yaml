@@ -20,17 +20,14 @@ jobs:
         id: get_current_version
         run: echo ::set-output name=current_version::$(grep -oP "Version:\s*\K.*" plugin.php)
         shell: bash
-      - name: Increment version in plugin.php
-        id: increment_version_in_plugin_php
+      - name: Check if should release
         run: |
           current_version=$(echo ${{ steps.get_current_version.outputs.current_version }})
-          major=$(echo $current_version | cut -d "." -f 1)
-          minor=$(echo $current_version | cut -d "." -f 2)
-          patch=$(echo $current_version | cut -d "." -f 3)
-          new_patch=$((patch + 1))
-          new_version="$major.$minor.$new_patch"
-          sed -i "s/Version:\s*$current_version/Version: $new_version/g" plugin.php
-        shell: bash
+          last_release=$(echo ${{ steps.get_last_release_tag.outputs.last_release_tag }} | cut -d 'v' -f 2)
+          if [ '$new_version' == '$last_release_tag' ]; then
+            echo 'Version not incremented. Skipping release.'
+            exit 0
+          fi
       - name: Get commit messages since last release
         id: get_commit_messages_since_last_release
         run: echo ::set-output name=commit_messages::$(git log --pretty=format:"%s" ${{ steps.get_last_release_tag.outputs.last_release_tag }}..HEAD)
@@ -43,13 +40,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.increment_version_in_plugin_php.outputs.new_version }}
-          release_name: Release ${{ steps.increment_version_in_plugin_php.outputs.new_version }}
+          tag_name: v${{ steps.get_current_version.outputs.current_version }}
+          release_name: Release ${{ steps.get_current_version.outputs.current_version }}
           draft: false
           prerelease: false
           body: |
             Changes in this Release:
-              ${{ steps.get_commit_messages_since_last_release.outputs.commit_messages }}
+            ${{ steps.get_commit_messages_since_last_release.outputs.commit_messages }}
           
     
       - name: Upload artifact

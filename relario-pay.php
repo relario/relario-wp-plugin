@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class Relario {
 
-	public $version = '1.0.0';
+	public $version = '1.0.1';
 
 	public $file = __FILE__;
 
