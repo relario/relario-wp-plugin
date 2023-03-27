@@ -24,7 +24,7 @@ jobs:
         shell: bash
       - name: Check if should release
         run: |
-          current_version=$(echo '${{ steps.get_current_version.outputs.current_version }})'
+          current_version=$(echo '${{ steps.get_current_version.outputs.current_version }}')
           last_release=$(echo '${{ steps.get_last_release_tag.outputs.last_release_tag }}' | cut -d 'v' -f 2)
           if [ "$current_version" == "$last_release" ]; then
             echo 'Version not incremented. Skipping release.'
