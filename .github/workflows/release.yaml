@@ -26,7 +26,7 @@ jobs:
         run: |
           current_version=$(echo ${{ steps.get_current_version.outputs.current_version }})
           last_release=$(echo ${{ steps.get_last_release_tag.outputs.last_release_tag }} | cut -d 'v' -f 2)
-          if [ '$new_version' == '$last_release' ]; then
+          if [ '$current_version' == '$last_release' ]; then
             echo 'Version not incremented. Skipping release.'
             exit 0
           fi
