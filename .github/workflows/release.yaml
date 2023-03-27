@@ -14,14 +14,14 @@ jobs:
         uses: actions/checkout@v2
       - name: Get version from plugin.php
         id: get_version
-        run: echo ::set-output name=version::$(grep -oP &apos;Version:\s*\K.*&apos; plugin.php)
+        run: echo ::set-output name=version::$(grep -oP "Version:\s*\K.*" plugin.php)
         shell: bash
       - name: Get commit messages since last release
         id: get_commit_messages_since_last_release
         run: echo ::set-output name=commit_messages::$(git log --pretty=format:&quot;%s&quot; ${{ steps.get_last_release_tag.outputs.last_release_tag }}..HEAD)
         shell: bash
       - name: Zip project
-        run: zip -r project.zip .
+        run: zip -r relario-pay-wp-plugin.zip .
       - name: Create release
         id: create_release
         uses: actions/create-release@v1.0.0
@@ -30,15 +30,16 @@ jobs:
         with:
           tag_name: v${{ steps.get_version.outputs.version }}
           release_name: Release ${{ steps.get_version.outputs.version }}
+          draft: false
+          prerelease: false
           body: |
             Changes in this Release:
               ${{ steps.get_commit_messages_since_last_release.outputs.commit_messages }}
-          draft: false
-          prerelease: false
+          
     
       - name: Upload artifact
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: project.zip
-          path: ./project.zip
+          name: relario-pay-wp-plugin.zip
+          path: ./relario-pay-wp-plugin.zip
 
