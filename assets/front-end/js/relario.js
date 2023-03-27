@@ -39,7 +39,7 @@
 		const nbrs = phoneNumbers.map(phoneNumber => `+${phoneNumber}`);
 
 		// const text = encodeURIComponent('Please do not alter this message and press SEND ') + smsBody;
-		const text = encodeURIComponent(smsBodyPrefix || '') + (smsBodyPrefix ? ' ' : '' ) + smsBody;
+		const text = encodeURIComponent(smsBodyPrefix || '') + (smsBodyPrefix ? ' ' : '') + smsBody;
 		// iOS detection from: http://stackoverflow.com/a/9039885/177710
 		// @ts-ignore
 		if (isIOS() && !window.MSStream) {
@@ -66,38 +66,56 @@
 		return `sms://${phoneNumbers.join(',')};?&body=${smsBody}`;
 	}
 
-	// Update smsCount on change
-	// 	$(document.body).on('change', '.relario-support-quantity', function () {
-	// 		var wrap = $(this).parents('.relario-support-wrap')
-	//
-	// 		wrap.find('.relario-support').attr('data-smscount', $(this).val())
-	// 	})
-
+	// On fixed button click submit
 	$(document.body).on('click', '.relario-support.relario-fixed', function (e) {
+		e.preventDefault()
+
 		var wrap = $(this).parents('.relario-support-wrap')
 		wrap.submit()
+
+		return false
 	})
 
-	$(document.body).on('click', '.relario-support.relario-dynamic', function (e) {
+
+	
+	$(document.body).on('change', '.relario-pay_input', function (e) {
+		e.preventDefault()
+
 		var wrap = $(this).parents('.relario-support-wrap')
-		var dropdown = wrap.find('.relario-support-quantity').first()
+		var input = wrap.find('.relario-pay_input').first()
 
-		dropdown.show()
-		$(this).hide()
+		var value = $(this).val();
+		if (value > 20) {
+			$(this).val(20);
+		}
+	
+		if (value < 1) {
+			$(this).val(1);
+		}
 
-		dropdown.on('change', function () {
-			wrap.attr('data-smscount', $(this).val())
-			console.log(wrap.attr('data-smscount'))
+		wrap.attr('data-smscount', $(this).val())
 
-			wrap.submit();
-		})
+		return false
 	})
 
-	// Support button clicked
+	function submitForm(e) {
+		e.preventDefault()
+		e.stopPropagation();
+
+		var wrap = $(this).parents('.relario-support-wrap')
+		wrap.submit();
+		return false;
+	}
+	$(document.body).on('click', '.relario-pay_logo', submitForm)
+	// On button click submit
+	$(document.body).on('click', '.relario-pay_button-text', submitForm)
+
+	// Support form submitted
 	$(document.body).on('submit', '.relario-support-wrap', function (e) {
 		e.preventDefault()
 		e.stopPropagation()
 		var smsTextPrefix = $(this).attr('data-smsTextPrefix');
+		debugger;
 		var data = {
 			action: 'relario_donate_request',
 			nonce: relario.nonce,
@@ -113,9 +131,8 @@
 				console.log(response.error)
 				return
 			}
-	
-			var redirect = getClickToSmsUrl(response.phoneNumbersList, response.smsBody, smsTextPrefix);
 
+			var redirect = getClickToSmsUrl(response.phoneNumbersList, response.smsBody, smsTextPrefix);
 			window.open(redirect);
 		})
 	})

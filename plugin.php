@@ -3,7 +3,7 @@
  * Plugin Name: 	Relario PAY
  * Plugin URI:
  * Description:
- * Version: 		1.0.0
+ * Version: 		1.0.1
  * Author:			Relario
  * Author URI:		https://relario.com
  * Text Domain: 	relario-pay

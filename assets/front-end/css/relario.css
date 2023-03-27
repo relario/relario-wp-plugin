@@ -85,8 +85,6 @@
 	font-size: 0.75rem;
 	padding-right: 1rem;
 	border-width: 0.175rem;
-
-
 }
 
 .relario-pay_small .relario-pay_button-text::before {
@@ -95,8 +93,6 @@
 	left: -0.45rem;
 	border-width: 0.175rem;
 	top: -0.17rem;
-
-
 }
 
 
@@ -106,7 +102,6 @@
 	font-size: 1.2rem;
 	padding-right: 1rem;
 	border-width: 0.25rem;
-
 }
 
 .relario-pay_large .relario-pay_button-text::before {
@@ -114,5 +109,114 @@
 	left: -1rem;
 	border-width: 0.25rem;
 	top: -0.25rem;
+}
 
+.relario-support { text-decoration: none !important; }
+.relario-pay_container .cls-1 { fill: #ec2d8e; }
+.relario-pay_container .cls-2 { fill: #cec2d9; }
+.relario-pay_container .cls-3 { fill: #d94540; }
+.relario-pay_container .cls-4 { fill: #4c3868; }
+.relario-pay_container .cls-5 { fill: #4b3867; }
+
+.relario-pay_input-group {
+    background: #4b3967;
+    position: relative;
+    height: 2rem;
+    width: auto;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    border: #ec2d8e 0.2rem solid;
+    border-right: 0;
+    display: flex;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    transition: background 0.3s;
+
+}
+
+.relario-pay_input-group::before {
+    background: #4b3967;
+    content: "";
+    position: absolute;
+    height: 2rem;
+    display: block;
+    width: auto;
+    padding: 0.5rem;
+    border: #ec2d8e 0.2rem solid;
+    border-left: 0;
+    border-right: 0;
+    top: -0.2rem;
+    right: -1rem;
+    transition: background 0.3s;
+}
+
+.relario-pay_input {
+
+    padding: 0.25rem;
+    border-radius: 5px;
+    border: 0;
+    background-color: #cec2d9;
+    text-align: center;
+    color: #4b3867;
+    margin-right: 0.5rem;
+    -webkit-appearance: textfield !important;
+    -moz-appearance: textfield !important;
+    appearance: textfield !important;
+}
+
+.relario-pay_input::-webkit-inner-spin-button, .relario-pay_input::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+
+.relario-pay_small .relario-pay_input-group {
+    height: 1.25rem;
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    padding-left: 1rem;
+    border-width: 0.175rem;
+}
+
+
+.relario-pay_small .relario-pay_input {
+    padding: 0.1rem;
+    font-size: 0.75rem;
+}
+
+.relario-pay_small .relario-pay_input-group::before {
+    height: 1.25rem;
+    padding: 0.25rem;
+    right: -0.45rem;
+    border-width: 0.175rem;
+    top: -0.17rem;
+
+
+}
+
+
+.relario-pay_large .relario-pay_input-group {
+    height: 3rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    border-width: 0.25rem;
+
+}
+
+.relario-pay_large .relario-pay_input-group::before {
+    height: 3rem;
+    right: -1rem;
+    border-width: 0.25rem;
+    top: -0.25rem;
+
+}
+
+.relario-pay_large .relario-pay_input {
+    padding: 0.5rem;
+    font-size: 1.2rem;
 }

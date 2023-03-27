@@ -1,5 +1,13 @@
 <div class="relario-pay_container relario-pay_<?php echo esc_attr( $size ); ?>">
-	<div class="relario-pay_logo">
+<?php 
+if ( $type == 'dynamic' ) :
+	?> <div class="relario-pay_input-group">
+		<input class="relario-pay_input" type="number" min="<?php echo $min ?>" max="<?php echo $max ?>" value="<?php echo $sms_count ?>" name="smsCount"/>
+		<label class="relario-pay_label" for="smsCount">SMS</label>
+	</div><?php 
+endif;
+?>	
+<div class="relario-pay_logo">
 		<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.73 85.73">
 			<g id="Layer_1-2">
 				<g>

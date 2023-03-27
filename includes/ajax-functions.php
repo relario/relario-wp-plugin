@@ -32,7 +32,7 @@ function donate_request() {
 			'iosUrl'           => sanitize_url( $response['iosClickToSmsUrl'] ),
 			'androidUrl'       => sanitize_url( $response['androidClickToSmsUrl'] ),
 			'phoneNumbersList' => array_map( 'sanitize_text_field', $response['phoneNumbersList'] ),
-			'smsBody' 		   => $response['smsBody'],
+			'smsBody'		   => $response['smsBody'],
 			'smsCount'         => $response['smsCount'],
 		) );
 	} catch ( \Exception $e ) {
