@@ -2,8 +2,8 @@
 /**
  * Plugin Name: 	Relario PAY
  * Plugin URI:
- * Description:
- * Version: 		1.0.1
+ * Description:		Relario PAY plugin offers an easy integration with our payment solution for users to accept donations
+ * Version: 		1.0.2
  * Author:			Relario
  * Author URI:		https://relario.com
  * Text Domain: 	relario-pay

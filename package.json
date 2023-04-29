@@ -14,7 +14,8 @@
     "sass": "^1.54.5"
   },
   "scripts": {
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "package": "folder=$(echo \"${PWD##*/}\") && cd .. && zip -r relario-pay.zip $folder -x \"*/.*\" -x \"node_modules\""
   },
   "author": "Jeroen Sormani"
 }

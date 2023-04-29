@@ -59,24 +59,16 @@ function debug_mode_log( ...$messages ) {
  *
  * @return array|mixed|string
  */
-function get_user_ip() {
-	if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
-		$ip = $_SERVER['HTTP_CLIENT_IP']; //check ip from share internet
-	} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
-		$ip = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] ); // Check IP via proxy, take first in line
-		$ip = $ip[0];
-	} else {
-		$ip = $_SERVER['REMOTE_ADDR'];
-	}
+function get_user_ip(){
+    foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
+        if (array_key_exists($key, $_SERVER) === true){
+            foreach (explode(',', $_SERVER[$key]) as $ip){
+                $ip = trim($ip); // just to be safe
 
-	// Local
-	if ( $ip == '127.0.0.1' ) {
-//		$ip = file_get_contents( 'https://api64.ipify.org' );
-		$ip = '1.1.1.1';
-	}
-
-	$ip = filter_var( $ip, FILTER_VALIDATE_IP );
-	$ip = preg_replace( '/[^0-9a-fA-F:., ]/', '', $ip );
-
-	return $ip;
+                if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) !== false){
+                    return $ip;
+                }
+            }
+        }
+    }
 }

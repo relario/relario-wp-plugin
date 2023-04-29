@@ -1,21 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans&display=swap');
 
 .relario-pay_container {
-	font-family: 'Fira Sans', sans-serif;
+	font-family: "Fira Sans", sans-serif;
 	font-display: swap;
 	width: 100%;
 	height: 100%;
 	display: flex;
+	box-sizing: content-box;
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	transition: background 0.3s;
+	transition: background-color 0.3s ease;
+}
+
+.relario-pay_button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .relario-pay_logo {
 	width: 4.5rem;
 	height: 4.5rem;
 	z-index: 2;
+	box-sizing: inherit;
 }
 
 .relario-pay_small .relario-pay_logo {
@@ -46,7 +54,8 @@
 	justify-content: center;
 	border-top-right-radius: 50px;
 	border-bottom-right-radius: 50px;
-	transition: background 0.3s;
+	transition: background-color 0.3s ease;
+	box-sizing: inherit;
 }
 
 .relario-pay_button-text::before {
@@ -62,7 +71,8 @@
 	border-right: 0;
 	top: -0.2rem;
 	left: -1rem;
-	transition: background 0.3s;
+	transition: background-color 0.3s ease;
+	box-sizing: inherit;
 }
 
 .relario-pay_container:hover {
@@ -95,7 +105,6 @@
 	top: -0.17rem;
 }
 
-
 .relario-pay_large .relario-pay_button-text {
 	height: 3rem;
 	padding: 0.5rem;
@@ -119,104 +128,101 @@
 .relario-pay_container .cls-5 { fill: #4b3867; }
 
 .relario-pay_input-group {
-    background: #4b3967;
-    position: relative;
-    height: 2rem;
-    width: auto;
-    padding: 0.5rem;
-    padding-left: 1rem;
-    border: #ec2d8e 0.2rem solid;
-    border-right: 0;
-    display: flex;
-    color: white;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    transition: background 0.3s;
-
+	background: #4b3967;
+	position: relative;
+	height: 2rem;
+	width: auto;
+	padding: 0.5rem;
+	padding-left: 1rem;
+	border: #ec2d8e 0.2rem solid;
+	border-right: 0;
+	display: flex;
+	color: white;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	box-sizing: inherit;
+	border-top-left-radius: 50px;
+	border-bottom-left-radius: 50px;
+	transition: background-color 0.3s ease;
 }
 
 .relario-pay_input-group::before {
-    background: #4b3967;
-    content: "";
-    position: absolute;
-    height: 2rem;
-    display: block;
-    width: auto;
-    padding: 0.5rem;
-    border: #ec2d8e 0.2rem solid;
-    border-left: 0;
-    border-right: 0;
-    top: -0.2rem;
-    right: -1rem;
-    transition: background 0.3s;
+	background: #4b3967;
+	content: "";
+	position: absolute;
+	height: 2rem;
+	display: block;
+	width: auto;
+	box-sizing: inherit;
+	padding: 0.5rem;
+	border: #ec2d8e 0.2rem solid;
+	border-left: 0;
+	border-right: 0;
+	top: -0.2rem;
+	right: -1rem;
+	transition: background 0.3s;
 }
 
 .relario-pay_input {
-
-    padding: 0.25rem;
-    border-radius: 5px;
-    border: 0;
-    background-color: #cec2d9;
-    text-align: center;
-    color: #4b3867;
-    margin-right: 0.5rem;
-    -webkit-appearance: textfield !important;
-    -moz-appearance: textfield !important;
-    appearance: textfield !important;
+	padding: 0.25rem;
+	border-radius: 5px;
+	border: 0;
+	background-color: #cec2d9;
+	text-align: center;
+	color: #4b3867;
+	box-sizing: inherit;
+	margin-right: 0.5rem;
+	-webkit-appearance: textfield !important;
+	-moz-appearance: textfield !important;
+	appearance: textfield !important;
 }
 
-.relario-pay_input::-webkit-inner-spin-button, .relario-pay_input::-webkit-outer-spin-button {
-    -webkit-appearance: none !important;
-    margin: 0 !important;
+.relario-pay_input::-webkit-inner-spin-button,
+.relario-pay_input::-webkit-outer-spin-button {
+	-webkit-appearance: none !important;
+	margin: 0 !important;
 }
-
 
 .relario-pay_small .relario-pay_input-group {
-    height: 1.25rem;
-    padding: 0.25rem;
-    font-size: 0.75rem;
-    padding-left: 1rem;
-    border-width: 0.175rem;
+	height: 1.25rem;
+	padding: 0.25rem;
+	font-size: 0.75rem;
+	padding-left: 1rem;
+	border-width: 0.175rem;
 }
 
-
 .relario-pay_small .relario-pay_input {
-    padding: 0.1rem;
-    font-size: 0.75rem;
+	padding: 0.1rem;
+	font-size: 0.75rem;
 }
 
 .relario-pay_small .relario-pay_input-group::before {
-    height: 1.25rem;
-    padding: 0.25rem;
-    right: -0.45rem;
-    border-width: 0.175rem;
-    top: -0.17rem;
-
-
+	height: 1.25rem;
+	padding: 0.25rem;
+	right: -0.45rem;
+	border-width: 0.175rem;
+	top: -0.17rem;
 }
 
 
 .relario-pay_large .relario-pay_input-group {
-    height: 3rem;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    padding-left: 1rem;
-    border-width: 0.25rem;
+	height: 3rem;
+	padding: 0.5rem;
+	font-size: 1.2rem;
+	padding-left: 1rem;
+	border-width: 0.25rem;
 
 }
 
 .relario-pay_large .relario-pay_input-group::before {
-    height: 3rem;
-    right: -1rem;
-    border-width: 0.25rem;
-    top: -0.25rem;
-
+	height: 3rem;
+	right: -1rem;
+	border-width: 0.25rem;
+	top: -0.25rem;
 }
 
 .relario-pay_large .relario-pay_input {
-    padding: 0.5rem;
-    font-size: 1.2rem;
+	padding: 0.5rem;
+	font-size: 1.2rem;
 }
