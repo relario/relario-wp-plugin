@@ -101,9 +101,11 @@ For support inquiries contact us at support@relario.com or chat with us on Whats
 
 
 == Screenshots ==
-1.png
-2.png
+
+
 == Changelog ==
+v1.0.3
+- Updated readme
 v1.0.2
 - Fixed requirements for plugin deployment
 
