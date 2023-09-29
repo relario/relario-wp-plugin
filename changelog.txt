@@ -1,3 +1,7 @@
+= 1.0.5 - 2023/09/29 =
+
+* styling fixes
+
 = 1.0.4 - 2023/09/28 =
 
 * styling fixes

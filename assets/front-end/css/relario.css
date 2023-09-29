@@ -6,16 +6,18 @@
 	width: 100%;
 	height: 100%;
 	display: flex;
-	box-sizing: content-box;
 	align-items: center;
 	justify-content: center;
 	position: relative;
 	transition: background-color 0.3s ease;
 }
 
-.relario-pay_container *,
-.relario-pay_container *::before,
-.relario-pay_container *::after {
+.relario-support-wrap .relario-pay_container {
+	box-sizing: content-box;
+}
+.relario-support-wrap .relario-pay_container *,
+.relario-support-wrap .relario-pay_container *::before,
+.relario-support-wrap .relario-pay_container *::after {
 	box-sizing: content-box;
 }
 
