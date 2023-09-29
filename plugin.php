@@ -3,7 +3,7 @@
  * Plugin Name: 	relario PAY Donation & Paywall Plugin
  * Plugin URI:
  * Description:		Accept donations, tips, and integrate a Paywall via an SMS payment gateway. 10X Conversion with no banks or cards - just a phone.
- * Version: 		1.0.3
+ * Version: 		1.0.4
  * Author:			relario PAY
  * Author URI:		https://relario.com
  * Text Domain: 	relario-pay

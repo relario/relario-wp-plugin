@@ -4,7 +4,7 @@ Donate link:
 Tags: relario-pay, donation
 Requires at least: 4.4
 Tested up to: 6.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 Requires PHP: 7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -104,6 +104,8 @@ For support inquiries contact us at support@relario.com or chat with us on Whats
 
 
 == Changelog ==
+v1.0.4
+- styling fixes
 v1.0.3
 - Updated readme
 v1.0.2
