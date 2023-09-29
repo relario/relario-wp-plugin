@@ -13,6 +13,12 @@
 	transition: background-color 0.3s ease;
 }
 
+.relario-pay_container *,
+.relario-pay_container *::before,
+.relario-pay_container *::after {
+	box-sizing: content-box;
+}
+
 .relario-pay_button {
 	display: flex;
 	align-items: center;
@@ -212,7 +218,6 @@
 	font-size: 1.2rem;
 	padding-left: 1rem;
 	border-width: 0.25rem;
-
 }
 
 .relario-pay_large .relario-pay_input-group::before {

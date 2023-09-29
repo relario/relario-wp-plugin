@@ -2,8 +2,8 @@
 
 const files = {
 	sass: {
-		src: ['./assets/**/css/*.scss'],
-		watch: ['./assets/**/css/*.scss', './assets/**/css/**/*.scss'],
+		src: ['./assets/**/css/*.css', '!./assets/**/css/**/*.min.css'],
+		watch: ['./assets/**/css/*.css', '!./assets/**/css/**/*.min.css'],
 	},
 	js: {
 		src: ['assets/**/js/*.js', '!assets/**/js/*.min.js'],
@@ -16,7 +16,7 @@ const sass = require('gulp-sass')(require('sass'));
 const uglify = require('gulp-uglify');
 const rename = require("gulp-rename");
 const babel = require('gulp-babel');
-
+const log  = require('fancy-log');
 // CSS
 gulp.task('sass', function () {
 	return gulp.src(files.sass.src)
